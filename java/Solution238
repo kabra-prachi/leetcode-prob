@@ -1,0 +1,24 @@
+class Solution238 {
+    public int[] productExceptSelf(int[] nums) {
+        int product = 1;
+        int[] ans = new int[nums.length];
+        for(int i : nums)
+            product = product * i;
+        for (int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                ans[i] = product/nums[i];
+            }else{//Condition if element is 0
+                int j = 0; int pro = 1;
+                if(i == j) j++;
+                while(j < nums.length ){
+                    pro = pro * nums[j];
+                    j++;
+                    if(i == j)
+                        j++;
+                }
+                ans[i] = pro;
+            }
+        }
+        return ans;
+    }
+}
